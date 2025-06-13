@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import numpy as np
-from lra import NystromExtension
+from acccholesky.lra import NystromExtension
 
 def lra_from_sample(A, sample):
     rows = A[sample,:]

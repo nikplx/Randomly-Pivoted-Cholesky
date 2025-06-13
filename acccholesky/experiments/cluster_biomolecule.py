@@ -20,7 +20,6 @@ sys.path.append('../')
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import k_means
-import scipy.linalg as spl
 from itertools import permutations
 from unif_sample import uniform_sample
 from leverage_score import recursive_rls_acc

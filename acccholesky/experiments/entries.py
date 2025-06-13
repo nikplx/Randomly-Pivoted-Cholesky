@@ -22,13 +22,13 @@ num_trials = 100
 ks = range(0, 160, 10)
 
 matrices = { "smile" : gallery.smile(n, bandwidth = 2.0),
-             "spiral" : gallery.robspiral(n) }
+             "spiral" : gallery.robspiral(n)}
 
 methods = { 'DPP' : dpp_lra.dpp_vfx,
             'RLS' : leverage_score.recursive_rls_acc,
             'Uniform' : unif_sample.uniform_sample,
             'RPCholesky' : rpcholesky.simple_rpcholesky,
-            'Greedy' : rpcholesky.greedy }
+            'Greedy' : rpcholesky.greedy}
 
 for matrix_name, A in matrices.items():
     print(matrix_name)

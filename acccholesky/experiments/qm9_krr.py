@@ -78,7 +78,6 @@ if __name__ == "__main__":
     import rpcholesky
     import leverage_score
     import unif_sample
-    import matplotlib.pyplot as plt
     import time
     from functools import partial
 
@@ -86,7 +85,7 @@ if __name__ == "__main__":
                 'Uniform' : unif_sample.uniform_sample,
                 'RPCholesky' : rpcholesky.simple_rpcholesky,
                 'RLS' : leverage_score.recursive_rls_acc,
-                'block50RPCholesky' : partial(rpcholesky.block_rpcholesky,b=50) }
+                'block50RPCholesky' : partial(rpcholesky.block_rpcholesky, b=50)}
 
     num_trials = 100
     lamb = 1.0e-8

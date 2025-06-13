@@ -2,10 +2,10 @@
 
 import numpy as np
 import scipy as sp
-from lra import PSDLowRank
+from acccholesky.lra import PSDLowRank
 from warnings import warn
 from time import time
-from matrix import AbstractPSDMatrix, PSDMatrix
+from acccholesky.matrix import AbstractPSDMatrix, PSDMatrix
 
 greedy_lapack = sp.linalg.get_lapack_funcs('pstrf', dtype=np.float64)
 

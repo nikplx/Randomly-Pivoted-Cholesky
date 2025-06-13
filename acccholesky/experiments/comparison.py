@@ -21,14 +21,14 @@ np.random.seed(2940938240)
 
 n = 10000
 As = { "smile" : gallery.smile(n, bandwidth = 2.0),
-       "spiral" : gallery.robspiral(n) }
+       "spiral" : gallery.robspiral(n)}
 ks = range(10, 160, 10)
 
 methods = { 'DPP' : dpp_lra.dpp_cubic,
             'RLS' : leverage_score.recursive_rls_acc,
             'Uniform' : unif_sample.uniform_sample,
             'RPCholesky' : rpcholesky.simple_rpcholesky,
-            'Greedy' : rpcholesky.greedy }
+            'Greedy' : rpcholesky.greedy}
 
 num_trials = 100
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import numpy as np
-from rpcholesky import rejection_cholesky
+from acccholesky.rpcholesky import rejection_cholesky
 from time import time
 
 def accelerated_rpqr(B, k, b = 'auto', accelerated=True, verbose=False):
