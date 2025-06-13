@@ -25,7 +25,7 @@ np.random.seed(342384230)
 
 # Add matrices
 As = { "smile" : gallery.smile(n, bandwidth = 2.0),
-       "spiral" : gallery.robspiral(n) }
+       "spiral" : gallery.robspiral(n)}
 
 methods = { 'RLS' : recursive_rls_acc,
             'Uniform' : uniform_sample,

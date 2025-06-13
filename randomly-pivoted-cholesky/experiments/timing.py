@@ -20,13 +20,12 @@ from utils import approximation_error
 import time
 from matrix import PSDMatrix
 import gallery
-import matplotlib.pyplot as plt
 import scipy
 
 n = 1000
 d = 10
 ks = range(0, 120, 20)
-A = gallery.kernel_from_data(np.random.randn(n,d), kernel="laplace")
+A = gallery.kernel_from_data(np.random.randn(n, d), kernel="laplace")
 
 num_trials = 1
 
@@ -35,7 +34,7 @@ methods = { 'RLS' : leverage_score.recursive_rls_acc,
             'RPCholesky' : rpcholesky.simple_rpcholesky,
             'Greedy' : rpcholesky.greedy,
             'BlockRPCholesky' : rpcholesky.block_rpcholesky,
-            'DPP' : dpp_lra.dpp_vfx }
+            'DPP' : dpp_lra.dpp_vfx}
 
 for name, method in methods.items():
     print(name)

@@ -1,6 +1,6 @@
 [project]
 name = "randomly-pivoted-cholesky"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = [
     {name = "Ethan N. Epperly and Joel A. Tropp and Robert J. Webbe"}

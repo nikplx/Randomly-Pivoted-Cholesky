@@ -17,7 +17,7 @@ methods = { 'RLS' : leverage_score.recursive_rls_acc,
             'Uniform' : unif_sample.uniform_sample,
             'RPChol' : rpcholesky.simple_rpcholesky,
             'Greedy' : rpcholesky.greedy,
-            'BlockRPChol' : rpcholesky.block_rpcholesky }
+            'BlockRPChol' : rpcholesky.block_rpcholesky}
 
 print(" &", " & ".join(methods.keys()), "& $\eta$", end = "")
 for filename in os.listdir(data_folder):
