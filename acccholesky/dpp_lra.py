@@ -3,7 +3,7 @@
 import os, sys
 from dppy.finite_dpps import FiniteDPP
 import numpy as np
-from utils import lra_from_sample, MatrixWrapper
+from acccholesky.utils import lra_from_sample, MatrixWrapper
 
 def dpp_sample_helper(A, k, **params):
 

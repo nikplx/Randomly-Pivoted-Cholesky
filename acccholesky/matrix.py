@@ -3,7 +3,7 @@
 import numpy as np
 from abc import ABC, abstractmethod
 import numbers
-from kernels import MaternKernel, MaternKernel_vec, MaternKernel_mtx, GaussianKernel, GaussianKernel_vec, GaussianKernel_mtx, LaplaceKernel, LaplaceKernel_vec, LaplaceKernel_mtx
+from acccholesky.kernels import MaternKernel, MaternKernel_vec, MaternKernel_mtx, GaussianKernel, GaussianKernel_vec, GaussianKernel_mtx, LaplaceKernel, LaplaceKernel_vec, LaplaceKernel_mtx
 from functools import partial
 from sklearn.metrics.pairwise import euclidean_distances, manhattan_distances
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import numpy as np
-from matrix import KernelMatrix, NonsymmetricKernelMatrix
+from acccholesky.matrix import KernelMatrix, NonsymmetricKernelMatrix
 import scipy
 import time
 from scipy.linalg import solve_triangular
