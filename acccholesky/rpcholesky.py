@@ -42,7 +42,7 @@ def cholesky_helper(A, k, alg, stoptol = 0):
         diags -= G[i,:]**2
         diags = diags.clip(min = 0)
 
-        if stoptol > 0 and sum(diags) <= stoptol * orig_trace:
+        if stoptol > 0 and np.sum(diags) <= stoptol * orig_trace:
             G = G[:i,:]
             rows = rows[:i,:]
             break
@@ -68,7 +68,7 @@ def block_cholesky_helper(A, k, b, alg, stoptol = 1e-14, strategy = "regularize"
     
     diags = A.diag()
     n = A.shape[0]
-    orig_trace = sum(diags)
+    orig_trace = np.sum(diags)
     scale = 2*max(diags)
     if stoptol is None:
         stoptol = 1e-14
@@ -88,7 +88,7 @@ def block_cholesky_helper(A, k, b, alg, stoptol = 1e-14, strategy = "regularize"
         block_size = min(k-counter, b)
         
         if alg == 'rp':
-            idx = rng.choice(range(n), size = 2*block_size, p = diags / sum(diags), replace = True)
+            idx = rng.choice(range(n), size = 2*block_size, p = diags / np.sum(diags), replace = True)
             idx = np.unique(idx)[:block_size]
             block_size = len(idx)
         elif alg == 'greedy':
@@ -130,7 +130,7 @@ def block_cholesky_helper(A, k, b, alg, stoptol = 1e-14, strategy = "regularize"
 
         counter += len(idx)
 
-        if stoptol > 0 and sum(diags) <= stoptol * orig_trace:
+        if stoptol > 0 and np.sum(diags) <= stoptol * orig_trace:
             G = G[:counter,:]
             rows = rows[:counter,:]
             break
@@ -162,7 +162,7 @@ def accelerated_rpcholesky(A, k, b = "auto", stoptol = 1e-13, verbose=False):
     
     diags = A.diag()
     n = A.shape[0]
-    orig_trace = sum(diags)
+    orig_trace = np.sum(diags)
     if stoptol is None:
         stoptol = 1e-13
 
@@ -181,7 +181,7 @@ def accelerated_rpcholesky(A, k, b = "auto", stoptol = 1e-13, verbose=False):
     
     counter = 0
     while counter < k:
-        idx = rng.choice(range(n), size = b, p = diags / sum(diags), replace=True)
+        idx = rng.choice(range(n), size = b, p = diags / np.sum(diags), replace=True)
 
         if auto_b:
             start = time()
@@ -221,7 +221,7 @@ def accelerated_rpcholesky(A, k, b = "auto", stoptol = 1e-13, verbose=False):
 
         counter += num_sel
 
-        if stoptol > 0 and sum(diags) <= stoptol * orig_trace:
+        if stoptol > 0 and np.sum(diags) <= stoptol * orig_trace:
             G = G[:counter,:]
             rows = rows[:counter,:]
             break

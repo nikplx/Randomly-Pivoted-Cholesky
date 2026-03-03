@@ -1,6 +1,6 @@
 [project]
 name = "acccholesky"
-version = "0.1.5"
+version = "0.1.6"
 description = ""
 authors = [
     {name = "Ethan N. Epperly and Joel A. Tropp and Robert J. Webbe"}
