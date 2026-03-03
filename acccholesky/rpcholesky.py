@@ -15,7 +15,7 @@ def cholesky_helper(A, k, alg, stoptol = 0):
     
     n = A.shape[0]
     diags = A.diag()
-    orig_trace = sum(diags)
+    orig_trace = np.sum(diags)
     if stoptol is None:
         stoptol = 0
     
@@ -28,7 +28,7 @@ def cholesky_helper(A, k, alg, stoptol = 0):
     
     for i in range(k):
         if alg == 'rp':
-            idx = rng.choice(range(n), p = diags / sum(diags))
+            idx = rng.choice(range(n), p = diags / np.sum(diags))
         elif alg == 'rgreedy':
             idx = rng.choice(np.where(diags == np.max(diags))[0])
         elif alg == "greedy":
