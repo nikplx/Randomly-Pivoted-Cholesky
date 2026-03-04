@@ -152,7 +152,8 @@ def rejection_cholesky(H):
         if np.random.rand() * u[j] < H[j,j]:
             idx.append(j)
             L[j:,j] = H[j:,j] / np.sqrt(H[j,j])
-            blas.dsyr(-1.0, L[(j + 1):, j], a=H[(j + 1):, (j + 1):], lower=1, overwrite_a=1)
+            v = L[(j+1):, j].reshape(-1, 1)
+            H[(j+1):,(j+1):] -= v @ v.T
     idx = np.array(idx)
     L = L[np.ix_(idx,idx)]
     return L, idx
