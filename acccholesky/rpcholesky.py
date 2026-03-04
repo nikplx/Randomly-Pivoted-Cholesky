@@ -2,6 +2,7 @@
 
 import numpy as np
 import scipy as sp
+from scipy.linalg import blas
 from acccholesky.lra import PSDLowRank
 from warnings import warn
 from time import time
@@ -151,7 +152,7 @@ def rejection_cholesky(H):
         if np.random.rand() * u[j] < H[j,j]:
             idx.append(j)
             L[j:,j] = H[j:,j] / np.sqrt(H[j,j])
-            sp.blas.dsyr(-1.0, L[(j + 1):, j], a=H[(j + 1):, (j + 1):], lower=1, overwrite_a=1)
+            blas.dsyr(-1.0, L[(j + 1):, j], a=H[(j + 1):, (j + 1):], lower=1, overwrite_a=1)
     idx = np.array(idx)
     L = L[np.ix_(idx,idx)]
     return L, idx
