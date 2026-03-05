@@ -144,19 +144,34 @@ def rejection_cholesky(H):
         raise RuntimeError("rejection_cholesky requires a square matrix")
     if np.trace(H) <= 0:
         raise RuntimeError("rejection_cholesky requires a strictly positive trace")
-    u = np.array([H[j,j] for j in range(b)])
+
+    u = np.diag(H).copy()
 
     idx = []
-    L = np.zeros((b,b))
+    L = np.zeros((b, b))
+    num_accepted = 0
+
     for j in range(b):
-        if np.random.rand() * u[j] < H[j,j]:
+        H_jj = H[j, j]
+        if num_accepted > 0:
+            H_jj -= np.sum(L[j, :num_accepted] ** 2)
+
+        if np.random.rand() * u[j] < H_jj:
             idx.append(j)
-            L[j:,j] = H[j:,j] / np.sqrt(H[j,j])
-            v = L[(j+1):, j].reshape(-1, 1)
-            H[(j+1):,(j+1):] -= v @ v.T
+
+            col = H[j:, j].copy()
+            if num_accepted > 0:
+                col -= L[j:, :num_accepted] @ L[j, :num_accepted]
+
+            L[j:, num_accepted] = col / np.sqrt(H_jj)
+            num_accepted += 1
+
     idx = np.array(idx)
-    L = L[np.ix_(idx,idx)]
+    L = L[idx, :num_accepted]
+
     return L, idx
+
+
 
 def accelerated_rpcholesky(A, k, b = "auto", stoptol = 1e-13, verbose=False):
     if not isinstance(A, AbstractPSDMatrix):
